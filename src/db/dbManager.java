@@ -7,13 +7,13 @@ import java.sql.ResultSet;
 
 public class dbManager{
     private String userName;
-    private String passward;
+    private String password;
     private int port;
     private String dbName;
 
     public dbManager() {
         this.userName = "kin";
-        this.passward = "kin_password";
+        this.password = "kin_password";
         this.port = 3314;
         this.dbName = "facebook";
     }
@@ -22,7 +22,7 @@ public class dbManager{
     public Connection getConnection(Connection con) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:" + port + "/" + dbName + "?user=" + userName + "&password=" + passward;
+            String url = "jdbc:mysql://localhost:" + port + "/" + dbName + "?user=" + userName + "&password=" + password;
             con = DriverManager.getConnection(url);
         } catch (Exception e) {
             e.printStackTrace();
