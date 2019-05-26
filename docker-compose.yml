@@ -1,7 +1,7 @@
 version: "3"
 services:
   db:
-    image: mysql5.7
+    image: mysql:5.7
     container_name: mysql_container
     environment:
       MYSQL_DATABASE: facebook
