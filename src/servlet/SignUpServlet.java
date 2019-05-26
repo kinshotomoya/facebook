@@ -5,13 +5,15 @@ import bean.AccountBean;
 import model.Account;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.net.http.HttpRequest;
 
+
+@WebServlet("/sign_up")
 public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,6 +32,10 @@ public class SignUpServlet extends HttpServlet {
         // AccountDBにデータを格納する
         AccountDAO dao = new AccountDAO();
         dao.createAccount(bean);
+
+        // viewに処理を飛ばす
+        Common com = new Common();
+        com.goToJsp(request, response, "top.jsp");
     }
 
     private void addSession(AccountBean bean, HttpServletRequest request) {
