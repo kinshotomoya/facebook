@@ -1,5 +1,8 @@
 package model;
 
+import DAO.AccountDAO;
+import bean.AccountBean;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
@@ -15,5 +18,11 @@ public class Account {
             e.printStackTrace();
         }
         return sha;
+    }
+
+    public AccountBean idLoginUser(String userName, String hashedPassword) {
+        AccountDAO dao = new AccountDAO();
+        AccountBean beanWithId = dao.findAccountByNameAndPassword(userName, hashedPassword);
+        return beanWithId;
     }
 }

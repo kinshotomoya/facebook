@@ -26,12 +26,15 @@ public class SignUpServlet extends HttpServlet {
         // passwordをハッシュ化する
         AccountBean bean = new AccountBean(userName, hashedPassword);
 
-        // session管理する
-        addSession(bean, request);
-
         // AccountDBにデータを格納する
         AccountDAO dao = new AccountDAO();
-        dao.createAccount(bean);
+        int accountId = dao.createAccount(bean);
+
+        // id付きのaccountBeanを作成する
+        AccountBean beanWithId = new AccountBean(userName, hashedPassword, accountId);
+
+        // session管理する
+        addSession(beanWithId, request);
 
         // viewに処理を飛ばす
         Common com = new Common();
