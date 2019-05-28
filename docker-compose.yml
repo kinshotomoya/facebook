@@ -1,5 +1,24 @@
 version: "3"
 services:
+  webserver:
+    container_name: nginx
+    build: ./docker/webserver/
+    ports:
+      - "8080:8080"
+    links:
+      - "servlet"
+    volumes:
+      - ./docker/webserver/conf/nginx.conf:/etc/nginx/conf.d/nginx.cnf
+  servlet:
+    container_name: tomcat
+    build: ./docker/tomcat/
+    ports:
+      - "8090:8090"
+    volumes:
+      # デプロイする.warファイルをマウントする
+      - ./docker/tomcat/deployment:/usr/local/tomcat/webapps/:rw
+      # tomcatのサーバー周りの設定ファイルをマウントする
+      - ./docker/tomcat/conf:/usr/local/tomcat/conf
   db:
     image: mysql:5.7
     container_name: mysql_container
@@ -13,4 +32,4 @@ services:
       - ./db/sql:/docker-entrypoint-initdb.d
       - ./db/my.cnf:/etc/mysql/conf.d/my/cnf
     ports:
-      - 3314:3306
+      - "3314:3306"
