@@ -3,16 +3,16 @@
     <!-- (2)Serviceタグの設定 -->
     <Service name="Catalina">
         <!-- (3)Connectorタグの設定 -->
-        <Connector port="8090" />
+        <Connector port="8080" />
         <!-- (4)Engineタグの設定 -->
-<!--        <Engine name="Catalina" defaulthost="localhost">-->
+        <Engine name="Catalina" defaulthost="localhost">
 <!--            &lt;!&ndash; (5)Loggerタグの設定 &ndash;&gt;-->
 <!--            <Logger classname="org.apache.catalina.logger.FileLogger" />-->
 <!--            &lt;!&ndash; (6)Hostタグの設定 &ndash;&gt;-->
-<!--            <Host name="localhost" appbase="webapps">-->
+            <Host name="localhost" appbase="webapps">
 <!--                &lt;!&ndash; (7)ネストされたLoggerタグの設定 &ndash;&gt;-->
 <!--                <Logger classname="org.apache.catalina.logger.FileLogger" />-->
-<!--            </Host>-->
-<!--        </Engine>-->
+            </Host>
+        </Engine>
     </Service>
 </Server>

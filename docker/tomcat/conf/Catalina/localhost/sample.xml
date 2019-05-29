@@ -1,0 +1,3 @@
+<!--静的ファイルのパスなどを設定するファイル-->
+<Context path=""
+docBase="webapps/sample"/>

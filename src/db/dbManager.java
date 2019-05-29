@@ -15,7 +15,7 @@ public class dbManager{
         this.userName = "kin";
         this.password = "kin_password";
         this.port = 3314;
-        this.dbName = "facebook";
+        this.dbName = "sample.xml";
     }
 
     // コネクションを貼る

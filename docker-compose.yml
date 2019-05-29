@@ -1,19 +1,19 @@
 version: "3"
 services:
-  webserver:
-    container_name: nginx
-    build: ./docker/webserver/
-    ports:
-      - "8080:8080"
-    links:
-      - "servlet"
-    volumes:
-      - ./docker/webserver/conf/nginx.conf:/etc/nginx/conf.d/nginx.cnf
+#  webserver:
+#    container_name: nginx
+#    build: ./docker/webserver/
+#    ports:
+#      - "8080:8080"
+#    links:
+#      - "servlet"
+#    volumes:
+#      - ./docker/webserver/conf/nginx.conf:/etc/nginx/conf.d/nginx.cnf
   servlet:
     container_name: tomcat
     build: ./docker/tomcat/
     ports:
-      - "8090:8090"
+      - "80:8080"
     volumes:
       # デプロイする.warファイルをマウントする
       - ./docker/tomcat/deployment:/usr/local/tomcat/webapps/:rw
